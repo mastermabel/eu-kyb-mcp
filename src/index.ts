@@ -41,7 +41,7 @@ server.registerTool(
       vat_number: z.string().describe("VAT number, with or without country prefix, e.g. DE123456789"),
       country_code: z.string().optional().describe("EU member state code (e.g. DE, FR, EL for Greece, XI for Northern Ireland). Optional if vat_number has a prefix."),
     },
-    annotations: { readOnlyHint: true, openWorldHint: true },
+    annotations: { title: "Validate EU VAT number (VIES)", readOnlyHint: true, openWorldHint: true },
   },
   (args) => run(() => checkEuVat(args)),
 );
@@ -56,7 +56,7 @@ server.registerTool(
       lei: z.string().optional().describe("20-character Legal Entity Identifier"),
       name: z.string().optional().describe("Company name (used when lei is not given)"),
     },
-    annotations: { readOnlyHint: true, openWorldHint: true },
+    annotations: { title: "Look up legal entity (GLEIF LEI)", readOnlyHint: true, openWorldHint: true },
   },
   (args) => run(() => lookupLei(args)),
 );
@@ -71,7 +71,7 @@ server.registerTool(
       email: z.string().optional().describe("Email address (only the domain is used)"),
       domain: z.string().optional().describe("Domain (alternative to email)"),
     },
-    annotations: { readOnlyHint: true, openWorldHint: true },
+    annotations: { title: "Check email domain", readOnlyHint: true, openWorldHint: true },
   },
   (args) => run(() => checkEmailDomain(args)),
 );
@@ -92,7 +92,7 @@ if (process.env.EU_KYB_DISABLE_AGENTSUPPLY !== "1") {
         max_price_per_report: z.number().min(0).optional().describe("Maximum price per report you would pay (EUR)"),
         contact_email: z.string().optional().describe("Email for the reply (recommended)"),
       },
-      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+      annotations: { title: "Request a full company verification report (AgentSupply)", readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
     },
     (args) => run(() => requestReport(args, VERSION)),
   );
