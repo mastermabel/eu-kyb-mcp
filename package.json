@@ -1,0 +1,54 @@
+{
+  "name": "eu-kyb-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for EU know-your-business checks: EU VAT validation (VIES), legal entity lookup (GLEIF LEI) and email-domain checks.",
+  "type": "module",
+  "bin": {
+    "eu-kyb-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "mcpName": "dev.agentsupply/eu-kyb-mcp",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "vitest run",
+    "start": "node dist/index.js",
+    "prepare": "tsc"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "kyb",
+    "vat",
+    "vies",
+    "lei",
+    "gleif",
+    "eu",
+    "ai-agents",
+    "verification"
+  ],
+  "homepage": "https://agentsupply.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastermabel/eu-kyb-mcp.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.1"
+  },
+  "author": "Martin Landwehrmann"
+}
